@@ -17,17 +17,17 @@ class Stack(list):
     def size(self):
         return len(self)
     
+    def insert(self, index, data):
+        raise AttributeError("No attribute insert in stack")
+    
 s = Stack()
 s.push(10)
 s.push(20)
 s.push(30)
-
-
-print("Pop value is:", s.pop())
-print("Pop value is:", s.pop())
-print("Pop value is:", s.pop())
+s.push(40)
 print(s)
-print("So Peek value is:", s.peek())
-print("So size of Stack is:", s.size())
-print("So is Empty :", s.is_empty())
-        
+s.pop()
+print(s)
+print(s.size())
+print(s.is_empty())
+print("Top Value", s.peek())
