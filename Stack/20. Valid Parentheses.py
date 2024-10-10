@@ -1,38 +1,27 @@
-from collections import deque
-
-class MyStack:
-    def __init__(self):
-        # Initialize two queues
-        self.q1 = deque()
-        self.q2 = deque()
-
-    def push(self, x: int) -> None:
-        # Push element to q2
-        self.q2.append(x)
+class Solution(object):
+    def isValid(self, s):
+        # Stack to keep track of opening brackets
+        stack = []
+    
+        # Mapping of closing brackets to their corresponding opening brackets
+        mapping = {')': '(', '}': '{', ']': '['}
+    
+        # Loop through each character in the string
+        for char in s:
+            # If the character is a closing bracket
+            if char in mapping:
+                # Pop the top element from the stack (if it is not empty)
+                # Otherwise, assign a dummy value '#' which will not match any opening bracket
+                top_element = stack.pop() if stack else '#'
+            
+                # Check if the top element matches the corresponding opening bracket
+                if mapping[char] != top_element:
+                    return False
+            else:
+                # If it is an opening bracket, push it onto the stack
+                stack.append(char)
         
-        # Move all elements from q1 to q2
-        while self.q1:
-            self.q2.append(self.q1.popleft())
-        
-        # Swap the names of q1 and q2
-        self.q1, self.q2 = self.q2, self.q1
-
-    def pop(self) -> int:
-        # Pop the front element from q1
-        return self.q1.popleft()
-
-    def top(self) -> int:
-        # Peek the front element from q1
-        return self.q1[0]
-
-    def empty(self) -> bool:
-        # Check if q1 is empty
-        return not self.q1
-
-# Example usage:
-stack = MyStack()
-stack.push(1)
-stack.push(2)
-print(stack.top())  # Output: 2
-print(stack.pop())  # Output: 2
-print(stack.empty())  # Output: False
+        # Return True if the stack is empty, otherwise False
+        return not stack
+s1 = Solution()
+print(s1.isValid('{([])}'))
