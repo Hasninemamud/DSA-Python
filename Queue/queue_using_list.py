@@ -12,10 +12,10 @@ class Queue(list):
         self.list.pop(0)
         
     def get_font(self):
-        return 'Font Value is: ',self.list[-1] 
+        return 'Font Value is: ',self.list[0] 
     
     def get_rear(self):
-        return 'Fear Value is:', self.list[0] 
+        return 'Fear Value is:', self.list[-1] 
         
     def size(self):
         return len(self.list)
