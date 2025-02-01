@@ -15,7 +15,7 @@ def bfs(graph, start_node):
         for neighbor in graph[current_node]:
             # If the neighbor has not been visited
             if neighbor not in visited:
-                # Mark the neighbor as visited and enqueue it
+                # Mark the neighbor as visited and enqueue 
                 visited.add(neighbor)
                 queue.append(neighbor)
 graph = {
